@@ -39,7 +39,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
 DATABASES = {
-    'default': env.db('DATABASE_URL', default='postgres://localhost/nomadgram'),
+    'default': env.db('DATABASE_URL', default='postgres://postgres:root@localhost:5432/nomadgram'),
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
@@ -50,7 +50,7 @@ ROOT_URLCONF = 'config.urls'
 # https://docs.djangoproject.com/en/dev/ref/settings/#wsgi-application
 WSGI_APPLICATION = 'config.wsgi.application'
 
-# APPS
+# APPS default
 # ------------------------------------------------------------------------------
 DJANGO_APPS = [
     'django.contrib.auth',
@@ -62,6 +62,7 @@ DJANGO_APPS = [
     # 'django.contrib.humanize', # Handy template tags
     'django.contrib.admin',
 ]
+# install internet
 THIRD_PARTY_APPS = [
     'crispy_forms',
     'allauth',
@@ -69,8 +70,10 @@ THIRD_PARTY_APPS = [
     'allauth.socialaccount',
     'rest_framework',
 ]
+# we create
 LOCAL_APPS = [
     'nomadgram.users.apps.UsersAppConfig',
+    'nomadgram.images.apps.ImagesConfig',
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
